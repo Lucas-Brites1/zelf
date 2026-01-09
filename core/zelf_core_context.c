@@ -24,11 +24,23 @@ void zelf_context_constructor(zmem_arena *arena, zmem_arena *work_arena,
     return;
   }
 
-  g_zelf_ctx->work_arena = work_arena;
-  g_zelf_ctx->out_arena = out_arena;
-  g_zelf_ctx->logger = logger;
-  g_zelf_ctx->state_info = state;
+  g_zelf_ctx->work_arena_ctx = work_arena;
+  g_zelf_ctx->out_arena_ctx = out_arena;
+  g_zelf_ctx->logger_ctx = logger;
+  g_zelf_ctx->state_info_ctx = state;
   zstate_ok();
+}
+
+void zelf_context_destructor(zelf_context *ctx) {
+  if (!ctx)
+    return;
+
+  ctx->work_arena_ctx = null;
+  ctx->out_arena_ctx = null;
+  ctx->logger_ctx = null;
+  ctx->state_info_ctx = null;
+
+  ctx = null;
 }
 
 // inicializar global context corretamente, impl string resto, arrumar log,

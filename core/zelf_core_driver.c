@@ -13,21 +13,22 @@ int zelf ZARGS {
                         "Failed trying to create zelf context", true);
 
   out(zargs *, ARGS);
-  new(zargs, ZCONTEXT_GET(work_arena), &ARGS, argc, argv);
+  new(zargs, ZCTX_GET(work_arena), &ARGS, argc, argv);
 
-  zassert_gte(ARGS->count, 1, zmem_arena, work_arena,
+  zassert_gte(ARGS->count, 1, zmem_arena, ZCTX_GET(work_arena),
               "No input file provided. Usage: zelf <file.zel>", true);
 
   out(zfile *, ZFILE);
   new(zfile, work_arena, &ZFILE, ARGS);
 
-  zassert_not_null(ZFILE->source, zmem_arena, work_arena,
+  zassert_not_null(ZFILE->source, zmem_arena, ZCTX_GET(work_arena),
                    "Failed to read source file", true);
 
   ZINFO("Compiling file: %s", ZFILE->path);
 
   printf(zstring_fmt "\n", zstring_args(ZFILE->source));
 
+  del(zelf_context, g_zelf_ctx);
   del(zmem_arena, work_arena);
   del(zmem_arena, out_arena);
   return g_zstate.code;
