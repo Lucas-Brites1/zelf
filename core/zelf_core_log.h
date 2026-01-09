@@ -2,6 +2,8 @@
 #define ZELF_CORE_LOG_H
 
 #include "zelf_core_types.h"
+#include <stdarg.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 // Cores ANSI
@@ -19,7 +21,7 @@ typedef enum {
   ZLOG_LEVEL_ERROR
 } zlog_level_e;
 
-typedef struct {
+typedef struct zlogger {
   boolean enabled;
   boolean enable_debug;
 } zlogger;

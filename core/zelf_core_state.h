@@ -29,7 +29,7 @@ typedef enum {
   ZFILE_ERR_READ_FAILED
 } zstate_e;
 
-typedef struct {
+typedef struct zstate_info {
   zstate_e code;
   const char *func;
   size line;

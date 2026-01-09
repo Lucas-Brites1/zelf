@@ -1,6 +1,4 @@
-#include "zelf_core_internal.h"
-#include <stddef.h>
-#include <stdlib.h>
+#include "zelf_core_arena.h"
 
 static void arena_insert_new_current_block(zmem_arena *arena, size data_size) {
   size new_cap = max(arena->first->capacity, data_size * 2);

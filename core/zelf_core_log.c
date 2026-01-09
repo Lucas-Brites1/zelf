@@ -1,6 +1,4 @@
-#include "zelf_core_internal.h"
-#include <stdarg.h>
-#include <stdio.h>
+#include "zelf_core_log.h"
 
 zlogger g_logger = {.enabled = true, .enable_debug = false};
 

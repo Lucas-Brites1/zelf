@@ -1,8 +1,11 @@
 #ifndef ZELF_CORE_FILE_H
 #define ZELF_CORE_FILE_H
 #include "zelf_core_arena.h"
+#include "zelf_core_macros.h"
 #include "zelf_core_string.h"
 #include "zelf_core_types.h"
+#include <stdio.h>
+#include <sys/stat.h>
 
 typedef struct {
   int count;
@@ -10,7 +13,7 @@ typedef struct {
   char *program;
 } zargs;
 
-typedef struct {
+typedef struct zfile {
   zstring *source;
   const char *path;
 } zfile;

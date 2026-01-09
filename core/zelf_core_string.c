@@ -1,6 +1,5 @@
 
-#include "zelf_core_internal.h"
-#include <string.h>
+#include "zelf_core_string.h"
 
 void zstring_constructor(zmem_arena *arena, zstring **out_zstr, size capacity) {
   if (!arena) {

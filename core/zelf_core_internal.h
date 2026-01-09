@@ -1,9 +1,9 @@
 #ifndef ZELF_CORE_INTERNAL_H
 #define ZELF_CORE_INTERNAL_H
 
-#define ZELF_INTERNAL
 #include "zelf_core_arena.h"
 #include "zelf_core_asserts.h"
+#include "zelf_core_context.h"
 #include "zelf_core_driver.h"
 #include "zelf_core_file.h"
 #include "zelf_core_log.h"

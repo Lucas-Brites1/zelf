@@ -1,7 +1,9 @@
 #ifndef ZELF_CORE_STRING_H
 #define ZELF_CORE_STRING_H
 #include "zelf_core_arena.h"
+#include "zelf_core_macros.h"
 #include "zelf_core_types.h"
+#include <string.h>
 
 #define ZSTR_MIN_CAP 64
 #define ZSTR_FROM_CSTR_PAD 16
@@ -10,18 +12,18 @@
 #define zstring_fmt "%.*s"
 #define zstring_args(zstr) (i8)(zstr)->len, (char *)(zstr)->data
 
-typedef struct {
+typedef struct zstring {
   size capacity;
   size len;
   u8 *data;
 } zstring;
 
-typedef struct {
+typedef struct zstring_cursor {
   const char *source;
   size current;
 } zstring_cursor;
 
-typedef struct {
+typedef struct zstring_view {
   const zstring *source;
   size start;
   size len;

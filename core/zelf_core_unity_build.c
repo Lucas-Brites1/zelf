@@ -11,6 +11,3 @@
 // #include "lexer.c"
 // #include "parser.c"
 // #include "transpiler.c"
-
-/* ---- entry point ---- */
-// #include "zelf_core_driver.c"

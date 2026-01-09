@@ -1,6 +1,4 @@
-#include "zelf_core_internal.h"
-#include <stdio.h>
-#include <sys/stat.h>
+#include "zelf_core_file.h"
 
 static boolean zfile_get_file_size(const char *path, size *out_size) {
   struct stat st;

@@ -1,7 +1,11 @@
 #ifndef ZELF_CORE_ARENA_H
 #define ZELF_CORE_ARENA_H
+#include "zelf_core_log.h"
+#include "zelf_core_macros.h"
 #include "zelf_core_state.h"
 #include "zelf_core_types.h"
+#include <stddef.h>
+#include <stdlib.h>
 
 typedef enum {
   Z8_ALIGNMENT = 8,
@@ -10,15 +14,15 @@ typedef enum {
   Z64_ALIGNMENT = 64
 } zmem_arena_alignment;
 
-typedef struct arena_block {
+typedef struct zmem_arena_block {
   size capacity;
   size used;
-  struct arena_block *next;
+  struct zmem_arena_block *next;
 
   u8 buff[];
 } zmem_arena_block;
 
-typedef struct {
+typedef struct zmem_arena {
   zmem_arena_block *first;
   zmem_arena_block *current;
   size bytes_total;
