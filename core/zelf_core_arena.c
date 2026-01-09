@@ -1,7 +1,4 @@
-#include "zelf_core_arena.h"
-#include "zelf_core_log.h"
-#include "zelf_core_state.h"
-#include "zelf_core_types.h"
+#include "zelf_core_internal.h"
 #include <stddef.h>
 #include <stdlib.h>
 
@@ -16,7 +13,7 @@ static inline boolean arena_block_has_space(zmem_arena_block *b, size padding,
 }
 
 static void arena_insert_new_current_block(zmem_arena *arena, size data_size) {
-  size new_cap = max(arena->first->capacity, mult(data_size, 2));
+  size new_cap = max(arena->first->capacity, data_size * 2);
   new_cap = align_up(new_cap, Z64_ALIGNMENT);
 
   out(zmem_arena_block *, new_curr_block);

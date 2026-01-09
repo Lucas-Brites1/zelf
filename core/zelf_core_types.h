@@ -23,12 +23,4 @@ typedef u8 boolean;
 #define false 0
 #define null ((anyptr)0)
 
-#define new(type, ...) type##_constructor(__VA_ARGS__)
-#define create(type, ...) type##_create(__VA_ARGS__)
-#define del(type, ...) type##_destructor(__VA_ARGS__)
-#define out(type, instance) type instance = null
-
-#define max(a, b) ((a) >= b) ? (a) : (b)
-#define mult(n, by) ((n) * (by))
-
 #endif // !ZELF_CORE_TYPES_H

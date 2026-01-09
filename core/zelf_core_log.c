@@ -1,4 +1,4 @@
-#include "zelf_core_log.h"
+#include "zelf_core_internal.h"
 #include <stdarg.h>
 #include <stdio.h>
 

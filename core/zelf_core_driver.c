@@ -1,5 +1,4 @@
-#include "zelf_core_driver.h"
-#include "zelf_core_file.h"
+#include "zelf_core_internal.h"
 #include <stdio.h>
 
 int zelf ZARGS {

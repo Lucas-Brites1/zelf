@@ -3,14 +3,6 @@
 #include "zelf_core_state.h"
 #include "zelf_core_types.h"
 
-#define KiB(n) ((size)1024 * (n))
-#define MiB(n) ((size)1024 * 1024 * (n))
-#define GiB(n) ((size)1024 * 1024 * 1024 * (n))
-
-#define alloc(arena, out, type, align, ...)                                    \
-  out = (type *)zmem_arena_alloc(                                              \
-      arena, sizeof(type) __VA_OPT__(*(__VA_ARGS__)), align)
-
 typedef enum {
   Z8_ALIGNMENT = 8,
   Z16_ALIGNMENT = 16,
