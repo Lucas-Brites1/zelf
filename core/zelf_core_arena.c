@@ -2,16 +2,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-static inline size align_up(uaddr addr, zmem_arena_alignment alignment) {
-  size mask = (alignment - 1);
-  return (addr + mask) & ~(mask);
-}
-
-static inline boolean arena_block_has_space(zmem_arena_block *b, size padding,
-                                            size space) {
-  return b->capacity >= b->used + padding + space;
-}
-
 static void arena_insert_new_current_block(zmem_arena *arena, size data_size) {
   size new_cap = max(arena->first->capacity, data_size * 2);
   new_cap = align_up(new_cap, Z64_ALIGNMENT);

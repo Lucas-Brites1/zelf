@@ -24,6 +24,16 @@ typedef struct {
   size bytes_total;
 } zmem_arena;
 
+static inline size align_up(uaddr addr, zmem_arena_alignment alignment) {
+  size mask = (alignment - 1);
+  return (addr + mask) & ~(mask);
+}
+
+static inline boolean arena_block_has_space(zmem_arena_block *b, size padding,
+                                            size space) {
+  return b->capacity >= b->used + padding + space;
+}
+
 void zmem_arena_block_constructor(zmem_arena_block **out_block, size capacity);
 void zmem_arena_constructor(zmem_arena **out_arena, size first_block_capacity);
 
