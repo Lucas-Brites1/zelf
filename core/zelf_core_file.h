@@ -4,8 +4,6 @@
 #include "zelf_core_string.h"
 #include "zelf_core_types.h"
 
-#define ZARGS (int argc, char **argv)
-
 typedef struct {
   int count;
   char **args;

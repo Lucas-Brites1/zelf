@@ -38,6 +38,6 @@ void zlog_message(zlog_level_e level, const char *file, int line,
   vfprintf(stream, fmt, args);
   va_end(args);
 
-  fprintf(stream, " \t%s(%s:%d)%s\n", Z_STYLE_FILE_META, file, line,
+  fprintf(stream, " \t%s$:%s:%d%s\n", Z_STYLE_FILE_META, file, line,
           Z_COLOR_RESET);
 }
