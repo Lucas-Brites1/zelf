@@ -15,7 +15,7 @@ int main ZARGS {
   out(zargs *, ARGS);
   new(zargs, gArena, &ARGS, argc, argv);
 
-  zassert_gte(ARGS->count, 2, zmem_arena, gArena,
+  zassert_gte(ARGS->count, 1, zmem_arena, gArena,
               "Failed to initilized CLI arguments context (ZARGS)", true);
 
   out(zfile *, ZFILE);
@@ -25,12 +25,8 @@ int main ZARGS {
 
   out(zstring *, str);
   new(zstring_from_cstr, gArena, &str, "Lucas Silva Brites");
-
-  if (!zstate_is_ok) {
-    printf("Erro ao criar string: %d\n", g_zstate.code);
-    del(zmem_arena, gArena);
-    return g_zstate.code;
-  }
+  zassert_state_success(zstate_get, zmem_arena, gArena,
+                        "State not success, something went wrong", true);
 
   printf(zstring_fmt "\n", zstring_args(str));
   printf(zstring_fmt, zstring_args(ZFILE->source));

@@ -33,4 +33,19 @@
     }                                                                          \
   } while (0)
 
+#define zassert_state_success(code, type_to_clean, ptr_to_clean, msg,          \
+                              should_exit)                                     \
+  do {                                                                         \
+    if (code != 1) {                                                           \
+      ZERROR("ASSERT STATE NOT SUCCESS (Exit: %s): %s",                        \
+             (should_exit) ? "TRUE" : "FALSE", msg);                           \
+                                                                               \
+      del(type_to_clean, ptr_to_clean);                                        \
+                                                                               \
+      if (should_exit) {                                                       \
+        exit(1);                                                               \
+      }                                                                        \
+    }                                                                          \
+  } while (0)
+
 #endif // !ZELF_CORE_ASSERTS_H
