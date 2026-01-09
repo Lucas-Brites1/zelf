@@ -3,7 +3,6 @@
 #include "zelf_core_asserts.h"
 #include "zelf_core_file.c"
 #include "zelf_core_log.c"
-#include "zelf_core_log.h"
 #include "zelf_core_state.h"
 #include "zelf_core_string.c"
 #include "zelf_core_string.h"
@@ -16,8 +15,8 @@ int main ZARGS {
   out(zargs *, ARGS);
   new(zargs, gArena, &ARGS, argc, argv);
 
-  zassert_not_null(ARGS, zmem_arena, gArena,
-                   "Failed to initilized CLI arguments context (ZARGS)", true);
+  zassert_gte(ARGS->count, 2, zmem_arena, gArena,
+              "Failed to initilized CLI arguments context (ZARGS)", true);
 
   out(zfile *, ZFILE);
   new(zfile, gArena, &ZFILE, ARGS);

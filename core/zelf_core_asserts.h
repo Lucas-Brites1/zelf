@@ -18,4 +18,19 @@
     }                                                                          \
   } while (0)
 
+#define zassert_gte(number, expected, type_to_clean, ptr_to_clean, msg,        \
+                    should_exit)                                               \
+  do {                                                                         \
+    if ((number) < (expected)) {                                               \
+      ZERROR("ASSERT GTE FAILED (Exit: %s): %s",                               \
+             (should_exit) ? "TRUE" : "FALSE", msg);                           \
+                                                                               \
+      del(type_to_clean, ptr_to_clean);                                        \
+                                                                               \
+      if (should_exit) {                                                       \
+        exit(1);                                                               \
+      }                                                                        \
+    }                                                                          \
+  } while (0)
+
 #endif // !ZELF_CORE_ASSERTS_H
