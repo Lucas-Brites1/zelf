@@ -16,4 +16,6 @@
 #define MiB(n) ((size)1024 * 1024 * (n))
 #define GiB(n) ((size)1024 * 1024 * 1024 * (n))
 
+static inline void dummy_destructor(unsigned char dummy_param) {}
+
 #endif // !ZELF_CORE_MACROS_H
