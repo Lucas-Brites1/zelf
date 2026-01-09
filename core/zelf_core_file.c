@@ -1,8 +1,4 @@
-#include "zelf_core_file.h"
-#include "zelf_core_arena.h"
-#include "zelf_core_state.h"
-#include "zelf_core_string.h"
-#include "zelf_core_types.h"
+#include "zelf_core_internal.h"
 #include <stdio.h>
 #include <sys/stat.h>
 

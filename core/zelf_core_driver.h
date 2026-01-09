@@ -3,7 +3,7 @@
 
 #include "zelf_core_types.h"
 
-#define ZARGS (i8 argc, char **argv)
+#define ZARGS (int argc, char **argv)
 int zelf ZARGS;
 
 #endif // ZELF_DRIVER_H
