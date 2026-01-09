@@ -15,11 +15,9 @@ int main ZARGS {
 
   out(zargs *, ARGS);
   new(zargs, gArena, &ARGS, argc, argv);
-  if (!ARGS) {
-    ZERROR("Args not initilized correctly");
-    del(zmem_arena, gArena);
-    return zstate_get;
-  }
+
+  zassert_not_null(ARGS, zmem_arena, gArena,
+                   "Failed to initilized CLI arguments context (ZARGS)", true);
 
   out(zfile *, ZFILE);
   new(zfile, gArena, &ZFILE, ARGS);
